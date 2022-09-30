@@ -10,25 +10,37 @@ const upload = (0, multer_1.default)();
 const employeeRouter = express_1.default.Router();
 const employeeController = new Employee_controller_1.EmployeeController();
 employeeRouter.get('/', (req, res, next) => {
-    employeeController.showListEmployees(req, res, next);
+    employeeController.showListEmployees(req, res, next).catch(err => {
+        console.log(err.message);
+    });
 });
 employeeRouter.get('/employee/create', (req, res, next) => {
     employeeController.showFormEmployees(req, res, next);
 });
 employeeRouter.post('/employee/create', upload.none(), (req, res, next) => {
-    employeeController.createEmployee(req, res, next);
+    employeeController.createEmployee(req, res, next).catch(err => {
+        console.log(err.message);
+    });
 });
 employeeRouter.get('/employee/delete/:id', (req, res, next) => {
-    employeeController.deleteEmployee(req, res, next);
+    employeeController.deleteEmployee(req, res, next).catch(err => {
+        console.log(err.message);
+    });
 });
 employeeRouter.get('/employee/update/:id', (req, res, next) => {
-    employeeController.showFormUpdate(req, res, next);
+    employeeController.showFormUpdate(req, res, next).catch(err => {
+        console.log(err.message);
+    });
 });
 employeeRouter.post('/employee/update/:id', upload.none(), (req, res, next) => {
-    employeeController.updateEmployee(req, res, next);
+    employeeController.updateEmployee(req, res, next).catch(err => {
+        console.log(err.message);
+    });
 });
 employeeRouter.get('/employee/detail/:id', (req, res, next) => {
-    employeeController.detailEmployee(req, res, next);
+    employeeController.detailEmployee(req, res, next).catch(err => {
+        console.log(err.message);
+    });
 });
 exports.default = employeeRouter;
 //# sourceMappingURL=Employee.router.js.map
